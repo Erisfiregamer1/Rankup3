@@ -1,8 +1,6 @@
 name: Test
 on:
   push:
-    paths:
-      - '*'
 
 jobs:
   pitest:
@@ -21,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
          name: Rankup3
-         path: build
+         path: build/
