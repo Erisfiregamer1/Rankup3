@@ -17,12 +17,8 @@ jobs:
           distribution: 'adopt'
       - name: Gradle Test
         run: ./gradlew test --no-daemon
-      - name: Upload Tests
-        uses: easingthemes/ssh-deploy@v2
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-rvzt --delete"
-          SOURCE: "build/reports/tests/test/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+         name: Rankup3
+         path: build/reports/tests/test/
